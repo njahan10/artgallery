@@ -1,71 +1,63 @@
 package org.comit.project.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
-public class User {
-
-	int idUser;
-	String firstName;
-	String lastName;
-	String username;
-	String password;	
-	String status;
-
-	public User() {
-
-	}
-	public User(int idUser, String firstName, String lastName, String username, String password, Date birth,
-			String status) {
-		super();
-		this.idUser = idUser;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;		
-		this.status = status;
-	}
-
-	public int getIdUser() {
-		return idUser;
-	}
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
+public class User extends Entity {
+	public String first_name;
+	public String last_name;	
+	public String username;
+	public String email;
+	public String password;
+	public  Date  birth;
+	public String status; 
 	
+	public String getFirstName() {
+		return this.first_name;
+	}	
+	public void setFirstName(String first_name) {
+		this.first_name = first_name;
+	}
+	
+	public String getLastName() {
+		return this.last_name;				
+	}	
+	public void setLastName(String last_name) {		
+		this.last_name = last_name;
+	}	
+	public String getUserName() {
+		return this.username;		
+	}	
+	public void setUserName(String username) {
+		this.username = username;		
+	}	
+	public String getEmail() {
+		return this.email;		
+	}	
+	public void setEmail(String email) {
+		
+		this.email = email;		
+	}	
+	public String getPassword() {
+		return this.password;		
+	}
+	
+	public void setPassword(String password) {		
+		this.password = password;		
+	}
+	public Date getBirth() {
+		return this. birth;		
+	}
+	public void setBirth(Date birth) {
+		this.birth=birth;
+	}
 	public String getStatus() {
-		return status;
+		return this.status;
 	}
 	public void setStatus(String status) {
-		this.status = status;
-	}
-	@Override
-	public String toString() {
-		return "User [idUser=" + idUser + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
-				+ username + ", password=" + password +  ", status=" + status + "]";
+		this. status=status;
+	}	
+	public String getFullName() {
+		String fullname = this.first_name+" "+this.last_name;
+		return fullname;		
 	}
 }
