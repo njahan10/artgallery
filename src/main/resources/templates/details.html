@@ -18,42 +18,18 @@
 	rel="stylesheet" />
 </head>
 <body>
-	<h1>Details page</h1>
-	<div class="container mt-3">
-		<nav class="navbar navbar-expand-lg navbar-light bg-info">
-			<a class="navbar-brand" href="#">My art gallery</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active "><a class="nav-link" href="#">Picture
-							details <span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item "><a class="nav-link" href="#">Upload
-							picture <span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item "><a class="nav-link">New User</a></li>
-					<li class="nav-item "><a class="nav-link">List Users</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
-				</ul>
-			</div>
-		</nav>
-	</div>
+	<div th:replace="fragments/navbar :: top-navbar"></div>
 	<div style="padding: 50px;">
-		<div class="card mb-3">
-			<img th:src="|img/${art.imagePath}|" class="card-img-top"
-					alt="Fissure in Sandstone" style="padding:5px;"/>
+		<div class=" col-lg-4 col-md-12 mb-4mb-lg-0 ">
+			<img th:src="@{'getimage/'+${art.imageUUID}}" class="card-img-top"
+				alt="Fissure in Sandstone" style="padding: 5px;" />
 			<div class="card-body">
 				<h5 th:text="${art.title}" class="card-title"></h5>
 				<p class="card-text">
 					<span><b>Size: </b></span><span th:text="${art?.size}"></span><br>
 					<span><b>Price: </b>$</span><span th:text="${art?.price}"></span><br>
-					<span><b>Description: </b></span><span th:text="${art?.description}"></span>
+					<span><b>Description: </b></span><span
+						th:text="${art?.description}"></span>
 				</p>
 			</div>
 		</div>

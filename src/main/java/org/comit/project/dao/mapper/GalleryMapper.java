@@ -16,17 +16,19 @@ public class GalleryMapper implements RowMapper<Art>{
 		art.setSize(rs.getString("ARTS_SIZE"));
 		art.setDescription(rs.getString("ARTS_DESCRIPTION"));
 		art.setPrice(rs.getDouble("ARTS_PRICE"));
-		art.setImagePath(rs.getString("ARTS_IMAGE_PATH"));
+		art.setImageName(rs.getString("ARTS_IMAGE_NAME"));
+		art.setImageUUID(rs.getString("ARTS_IMAGE_UUID"));
 		return art;
 	}
 	
-	public Art mapFromDTO(HttpServletRequest request) {
+	public Art mapFromDTO(HttpServletRequest request, String fileId, String fileName) {
 		Art art = new Art();
 		art.setTitle(request.getParameter("title"));
 		art.setSize(request.getParameter("size"));
 		art.setPrice(Double.parseDouble(request.getParameter("price")));
 		art.setDescription(request.getParameter("description"));
-		art.setImagePath(request.getParameter("path"));
+		art.setImageUUID(fileId);
+		art.setImageName(fileName);
 		return art;
 	}
 }

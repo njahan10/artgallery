@@ -1,9 +1,24 @@
 
-server: 
- port: 8081 
- 
- 
+server:
+  port: 8081
+
+logging.level:
+  web: debug
+  org.comit.project: debug
+
 spring:
+  profiles:
+    active: prod 
+    
+files:
+  upload:
+    path: /uploads
+
+---
+# Development profile
+
+spring:
+  profiles: default
   datasource:
     url: jdbc:mysql://localhost:3306/artgallery?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
@@ -12,3 +27,29 @@ spring:
   sql:
     init:
       continue-on-error: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+        
+---
+# Production profile
+
+server: 
+  port: 8083 
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://artgallery.cl28m9s00ixq.us-west-2.rds.amazonaws.com:3306/artgallery?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: admin
+    password: Comit2022
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      continue-on-error: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+        

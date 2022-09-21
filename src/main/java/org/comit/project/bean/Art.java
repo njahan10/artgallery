@@ -4,7 +4,8 @@ public class Art extends Entity {
 	public String title;
 	public String size;
 	public String description;
-	public String imagePath;
+	public String imageName;
+	public String imageUUID;
 	public double price;	
 	
 	public String getTitle() {		
@@ -37,11 +38,26 @@ public class Art extends Entity {
 		this.price = price;		
 	}
 	
-	public String getImagePath() {		
-		return this.imagePath;		
+	public String getImageName() {		
+		return this.imageName;		
 	}
 	
-	public void setImagePath(String imagePath) {		
-		this.imagePath = imagePath;		
-	}	
+	public void setImageName(String imageName) {		
+		this.imageName = imageName;		
+	}
+	
+	public String getImageUUID() {		
+		return this.imageUUID;		
+	}
+	
+	public void setImageUUID(String imageUUID) {		
+		this.imageUUID = imageUUID;		
+	}
+
+	@Override
+	public String toString() {
+		return "Art [title=" + title + ", size=" + size + ", description=" + description + ", imageName=" + imageName
+				+ ", imageUUID=" + imageUUID + ", price=" + price + "]";
+	}
+	
 }

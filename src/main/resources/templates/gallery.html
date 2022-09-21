@@ -15,47 +15,22 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
 	rel="stylesheet" />
 
-<title>Insert title here</title>
+<title>Gallery page</title>
 </head>
 <body>
-<div class="container mt-3">
-		<nav class="navbar navbar-expand-lg navbar-light bg-info">
-			<a class="navbar-brand active" href="#">My art gallery</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item "><a class="nav-link" href="#">Picture
-							details <span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item "><a class="nav-link" href="#">Upload
-							picture <span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item "><a class="nav-link">New User</a></li>
-					<li class="nav-item "><a class="nav-link">List User</a></li>
-				</ul>
-			</div>
-		</nav>
-
-	</div>
-
-	<div class="row" style="margin:50px;">
-		<div th:each="art:${arts}" class=" col-lg-4 col-md-12 mb-4mb-lg-0">
+	<div th:replace="fragments/navbar :: top-navbar"></div>
+	<div class="row" style="margin:30px 50px 0px 50px;">
+		<div th:each="art:${arts}" class=" col-lg-3 col-md-11 mb-3mb-lg-0" style="margin-bottom:10px;">
 			<div class="card">
-				<img th:src="|img/${art.imagePath}|" class="card-img-top"
+				<img th:src="@{'getimage/'+${art.imageUUID}}" class="card-img-top"
 					alt="Fissure in Sandstone" style="padding:5px;"/>
 				<div class="card-body">
 					<h5 th:text="${art.title}" class="card-title"></h5>
 					<p class="card-text">
 						<span><b>Price: </b>$</span><span th:text="${art.price}"></span>
 					</p>
-					<a href="#!" class="btn btn-primary">Add to cart</a> <a href="#!"
-						class="btn btn-primary">Details</a>
+					<a th:href="@{/shoppingcart/add/}+${art.id}" class="btn btn-primary">Add to cart</a> 
+					<a th:href="@{/details/}+${art.id}" class="btn btn-primary float-right">Details</a>
 				</div>
 			</div>
 
